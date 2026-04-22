@@ -12,6 +12,9 @@ function App() {
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
   };
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  };
 
   return (
     <div className="app">
@@ -19,11 +22,10 @@ function App() {
       <AddTaskForm onAddTask={addTask} />
       <div className="tasks-list">
         {tasks.map(task => (
-          <TaskCard key={task.id} task={task} />
+          <TaskCard key={task.id} task={task} onDelete={deleteTask}/>
         ))}
       </div>
     </div>
   );
 }
-
 export default App;

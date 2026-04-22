@@ -10,10 +10,17 @@ function TaskCard({ task, onDelete }) {
     return deadlineDate < today;
   };
 
+  // Форматируем дату в русский формат
+  const formattedDate = new Date(task.deadline).toLocaleDateString('ru-RU', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   return (
     <div className={`task-card ${isOverdue() ? 'overdue' : ''}`}>
       <h3 className="task-title">{task.title}</h3>
-      <p className="task-deadline">Дедлайн: {task.deadline}</p>
+      <p className="task-deadline">Дедлайн: {formattedDate}</p>
       <button className="delete-btn" onClick={() => onDelete(task.id)}>
         Удалить
       </button>

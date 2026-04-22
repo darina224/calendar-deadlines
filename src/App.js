@@ -54,6 +54,11 @@ function App() {
 
     // Сортируем отфильтрованные задачи
     return filtered.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+    
+    // После фильтрации и сортировки
+    if (filtered.length === 0) {
+      return []; // или можешь вернуть пустой массив
+    }
   };
 
   return (
@@ -63,9 +68,13 @@ function App() {
       <AddTaskForm onAddTask={addTask} />
       <Filter filter={filter} setFilter={setFilter} />
       <div className="tasks-list">
-        {getFilteredTasks().map(task => (
-          <TaskCard key={task.id} task={task} onDelete={deleteTask} />
-        ))}
+        {getFilteredTasks().length === 0 ? (
+          <div className="empty-message">Нет заданий</div>
+        ) : (
+          getFilteredTasks().map(task => (
+            <TaskCard key={task.id} task={task} onDelete={deleteTask} />
+          ))
+        )}
       </div>
     </div>
   );

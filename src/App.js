@@ -25,6 +25,11 @@ function App() {
   const deleteTask = (taskId) => {
     setTasks(tasks.filter(task => task.id !== taskId));
   };
+  const getSortedTasks = () => {
+  return [...tasks].sort((a, b) => {
+    return new Date(a.deadline) - new Date(b.deadline);
+  });
+  };
 
   return (
     <div className="app">
@@ -32,9 +37,9 @@ function App() {
       <CurrentDate />
       <AddTaskForm onAddTask={addTask} />
       <div className="tasks-list">
-        {tasks.map(task => (
-          <TaskCard key={task.id} task={task} onDelete={deleteTask}/>
-        ))}
+        {getSortedTasks().map(task => (
+          <TaskCard key={task.id} task={task} onDelete={deleteTask} />
+          ))}
       </div>
     </div>
   );

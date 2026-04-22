@@ -1,0 +1,17 @@
+.current-date {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-label {
+  font-weight: bold;
+}
+
+.date-value {
+  color: #007bff;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import TaskCard from './TaskCard';
 import AddTaskForm from './AddTaskForm';
+import CurrentDate from './CurrentDate';
 
 function App() {
   const [tasks, setTasks] = useState(() => {
@@ -28,6 +29,7 @@ function App() {
   return (
     <div className="app">
       <h1>Календарь дедлайнов</h1>
+      <CurrentDate />
       <AddTaskForm onAddTask={addTask} />
       <div className="tasks-list">
         {tasks.map(task => (

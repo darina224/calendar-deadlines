@@ -31,3 +31,10 @@
 .delete-btn:hover {
   background: #c82333;
 }
+.task-card.overdue {
+  background: #ffebee;
+}
+
+.task-card.overdue .task-title {
+  color: #dc3545;
+}
